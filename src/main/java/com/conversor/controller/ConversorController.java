@@ -63,4 +63,14 @@ public class ConversorController {
     public void limparHistorico() {
         historico.limpar();
     }
+    public String obterHistorico() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("===== HISTÓRICO =====\n");
+
+    for (Conversao c : historico.listar()) {
+        sb.append(c.toString()).append("\n");
+    }
+
+    return sb.toString();
+}
 }
