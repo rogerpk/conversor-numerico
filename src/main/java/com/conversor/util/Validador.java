@@ -19,6 +19,6 @@ public class Validador {
     }
 
     public static boolean isDecimal(String valor) {
-        return valor.matches("[0-9]+");
+        return valor.matches("[0-9]+(\\.[0-9]+)?");
     }
 }
