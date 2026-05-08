@@ -5,8 +5,6 @@ import com.conversor.model.Conversor;
 import com.conversor.model.Historico;
 import com.conversor.util.Validador;
 
-import java.math.BigInteger;
-
 public class ConversorController {
 
     private Conversor conversor = new Conversor();
@@ -21,10 +19,6 @@ public class ConversorController {
             }
 
             valor = valor.replace(",", ".");
-
-            if (valor.contains(".")) {
-                return "Conversões fracionárias ainda não suportadas.";
-            }
 
             switch (origem) {
 
@@ -64,9 +58,9 @@ public class ConversorController {
                     return "Base inválida.";
             }
 
-            BigInteger decimal = conversor.paraDecimal(valor, origem);
+            java.math.BigDecimal decimal = conversor.paraDecimal(valor, origem);
 
-            String resultado = conversor.deDecimal(decimal, destino);
+            String resultado = conversor.deDecimal(decimal, destino).replace(".", ",");
 
             historico.adicionar(
                     new Conversao(valor, origem, destino, resultado)
